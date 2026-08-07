@@ -1,0 +1,19 @@
+-- 1. Insert a test client user
+INSERT INTO users (id, name, email, password_hash, role) 
+VALUES (1, 'Test Client', 'client@test.com', 'hashed_pass_123', 'client')
+ON CONFLICT (id) DO NOTHING;
+
+-- 2. Insert a test counselor user
+INSERT INTO users (id, name, email, password_hash, role) 
+VALUES (2, 'Dr. Sarah Smith', 'counselor@test.com', 'hashed_pass_123', 'counselor')
+ON CONFLICT (id) DO NOTHING;
+
+-- 3. Create the counselor's profile
+INSERT INTO counselor_profiles (user_id, bio, specialties, hourly_rate, is_verified) 
+VALUES (2, 'Licensed clinical psychologist specializing in anxiety and stress management.', ARRAY['Anxiety', 'Stress'], 100.00, true)
+ON CONFLICT DO NOTHING;
+
+-- 4. Create an appointment linking them with a specific secret room code
+INSERT INTO appointments (client_id, counselor_id, appointment_time, room_code, status) 
+VALUES (1, 2, NOW() + INTERVAL '1 hour', 'TEST-ROOM-123', 'scheduled')
+ON CONFLICT DO NOTHING;
