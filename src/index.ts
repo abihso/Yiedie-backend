@@ -51,6 +51,9 @@ app.get("/api/counselors", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/", (req: Request, res: Response) => {
+  return res.status(200).json({message : "Good to go"})
+})
 // 2. Verify Secret Room Code Route
 app.post("/api/verify-room", async (req: Request, res: Response) => {
   const { roomCode, userId } = req.body;

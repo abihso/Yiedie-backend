@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
@@ -11,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@types/socket.io": "^3.0.1",
     "cors": "^2.8.6",
@@ -24,8 +25,14 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.2",
     "drizzle-kit": "^0.31.10",
+    "esbuild": "^0.28.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.9",
     "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.1": true
   }
 }
